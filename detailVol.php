@@ -1,30 +1,42 @@
 <?php
 include('navbar.php');
 
-if(isset($_GET['idvols']) AND !empty($_GET['idvols'])){
-    $pdo = getPdo();
-    $stmt= $pdo->query('SELECT * FROM vols WHERE idvols = ' .$_GET['idvols']);
-     if($stmt->rowCount() == 1) {
-        $stmt = $stmt->fetch();
-        $numvol = $stmt['numvol'];
-        $villeD = $stmt['villeDepart'];
-        $villeA = $stmt['villeArrivee'];
-        $heureD = $stmt['heureDepart'];
-        $heureA = $stmt['heureArrivee'];
-         
+
+
+
+    if(isset($_GET['idvols']) AND !empty($_GET['idvols'])){
+        $pdo = getPdo();
+        $stmt= $pdo->query('SELECT * FROM vols WHERE idvols = ' .$_GET['idvols']);
+        if($stmt->rowCount() == 1) {
+            $stmt = $stmt->fetch();
+            $numvol = $stmt['numvol'];
+            $villeD = $stmt['villeDepart'];
+            $villeA = $stmt['villeArrivee'];
+            $heureD = $stmt['heureDepart'];
+            $heureA = $stmt['heureArrivee'];
+            
+        }
+    
     }
- 
+if(isset($_SESSION['id'])){    
+
+    if(isset($_POST['reserve'])){
+        $pdo = getPdo();
+
+        $reserv = $pdo->query("INSERT INTO  reservation (nom,prenom,numvol,destination,id)
+
+        VALUES ('$_SESSION[nom]','$_SESSION[prenom]','$numvol','$villeA' ,'$_SESSION[id]')") or die($pdo->error);
+
+    }
+
+}else{
+    ?>
+    <div class="alert alert-danger">
+        <strong>Erreur</strong> Vous devez être connecté pour reserver cliqué <a href="viewLogin.php"><strong>ici !<strong></a> 
+    </div>
+
+<?php
 }
-
-if(isset($_POST['reserve'])){
-    $pdo = getPdo();
-
-    $reserv = $pdo->query("INSERT INTO  reservation (nom,prenom,numvol,destination,id)
-
-     VALUES ('$_SESSION[nom]','$_SESSION[prenom]','$numvol','$villeA' ,'$_SESSION[id]')") or die($pdo->error);
-
-}
-
 
 ?>
 
