@@ -2,9 +2,6 @@
 session_start();
 require("librairies/db.class.php");
 
-
-
-
 $result = -300;
 /*
 1= succes

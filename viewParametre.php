@@ -59,10 +59,6 @@ if(isset($_SESSION['id']) AND !empty($_SESSION['id'])) {
            </div><?php
         }
 
-                
-                        
-     // Redirection vers ma page index.php
-     // header('Location: index.php');
  }
 
   
@@ -84,14 +80,13 @@ if(isset($_SESSION['id']) AND !empty($_SESSION['id'])) {
                         <input type="text" class="form-control" name="motdepasse" value=" <?= $motdepasse;?>"><br>
                     </div>
                     <button type="submit" name="changer" class="btn btn-primary btn-block">Changer</button>
-                    <!-- <a href="#"><small>Mot de Passe oublié ?</small></a> -->
+                    <a class="btn btn-primary btn-block" href="ViewReservation.php?idmembre=<?php echo $_SESSION['id'];?>">Mes reservations</a>
                 </form>
                     <p class="mt-xs-1"> <small>NianaVoyage- reservation vol et voyage © 2021</small> </p>
             </div>
         </div>
     </div>  
 </Section>
-
 
 <?php include('footer.php'); ?>
 
