@@ -47,12 +47,14 @@ include('librairies/db.class.php'); ?>
                 <a href="viewVol.php#vol" data-text="Vol">Vol</a>
             </li>
             <il>
+            <form method="GET" action="recherche.php">
                 <div id="rolling_bar">
-                    <input type="text" id="txt">
-                    <a href="#" id="btn">
+                    <input type="text"name="q" id="txt">
+                    <a href="#" id="btn" type=submit >
                         <i class="fas fa-search"></i>
                     </a>
                 </div>
+            </form>    
             </il>
         </ul>
         

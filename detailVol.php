@@ -3,8 +3,7 @@ include('navbar.php');
 
 
 
-
-    if(isset($_GET['idvols']) AND !empty($_GET['idvols'])){
+if(isset($_GET['idvols']) AND !empty($_GET['idvols'])){
         $pdo = getPdo();
         $stmt= $pdo->query('SELECT * FROM vols WHERE idvols = ' .$_GET['idvols']);
         if($stmt->rowCount() == 1) {
